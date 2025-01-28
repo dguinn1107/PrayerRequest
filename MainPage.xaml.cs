@@ -2,24 +2,29 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void OnImageButtonClicked(object sender, EventArgs e)
         {
-            count++;
+            DisplayAlert("Prayer Request", "You clicked the prayer image!", "OK");
+        }
 
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
+        private void OnDateChanged(object sender, DateChangedEventArgs e)
+        {
+            var selectedDate = e.NewDate;
+            Console.WriteLine($"Selected date: {selectedDate.ToShortDateString()}");
+        }
 
-            SemanticScreenReader.Announce(CounterBtn.Text);
+        private void OnSubmitClicked(object sender, EventArgs e)
+        {
+            var prayerRequest = PrayerRequestEntry.Text;
+            //var prayerDate = PrayerDate.Date;
+
+            //DisplayAlert("Prayer Request Submitted", $"Prayer Request: {prayerRequest}\nDate: {prayerDate.ToShortDateString()}", "OK");
         }
     }
-
 }
+
