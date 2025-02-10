@@ -3,39 +3,67 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PrayerRequest.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout Padding="30,0" Spacing="25">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <ImageButton
-                Source="prayerhands.png"
-                HeightRequest="100"
-                Clicked="OnImageButtonClicked" />
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            
 
-            <Entry 
-                x:Name="PrayerRequestEntry" 
-                Placeholder="What’s your prayer request?"
-                HeightRequest="50"
-                 />
 
-            <Picker Title="Urgency" HorizontalOptions="Fill">
-                <Picker.Items>
-                    <x:String>Low</x:String>
-                    <x:String>Medium</x:String>
-                    <x:String>High</x:String>
-                </Picker.Items>
-            </Picker>
+        </Grid.ColumnDefinitions>
 
-            <Button Text="Submit" Clicked="OnSubmitClicked"/>
+        <ImageButton Grid.Row="0" Grid.Column="1"
+                     Source="prayerhands.png"
+                     HeightRequest="100"
+                     Clicked="OnImageButtonClicked" />
 
-            <Label Text="Expires after"
-           FontSize="18"
-           HorizontalOptions="Start"/>
+        <Entry Grid.Row="1" Grid.Column="1"
+               x:Name="PrayerRequestEntry"
+               Placeholder="What’s your prayer request?"
+               HeightRequest="50" />
 
-            <!-- Slider View -->
-            <Slider Minimum="0" Maximum="100" Value="50"
-            HorizontalOptions="Fill"/>
+        <Picker Grid.Row="2" Grid.Column="1"
+                Title="Urgency"
+                HorizontalOptions="Fill">
+            <Picker.Items>
+                <x:String>Low</x:String>
+                <x:String>Medium</x:String>
+                <x:String>High</x:String>
+            </Picker.Items>
+        </Picker>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <Label Grid.Row="3" Grid.Column="1"
+               Text="Expires after"
+               FontSize="18"
+               HorizontalOptions="Start" />
 
+        <Slider Grid.Row="4" Grid.Column="1"
+                x:Name="SliderControl"
+                Minimum="1"
+                Maximum="7"
+                Value="1"
+                HorizontalOptions="Fill"
+                ValueChanged="OnSliderValueChanged" />
+
+        <Label Grid.Row="3" Grid.Column="2"
+                x:Name="SliderValueLabel"
+                Text="hi"
+                FontSize="18"
+                HorizontalOptions="Start"/>
+
+
+        <Button Grid.Row="6" Grid.Column="1"
+                Text="Submit"
+                Clicked="OnSubmitClicked" />
+    </Grid>
 </ContentPage>

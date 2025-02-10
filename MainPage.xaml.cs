@@ -17,13 +17,18 @@
             var selectedDate = e.NewDate;
             Console.WriteLine($"Selected date: {selectedDate.ToShortDateString()}");
         }
+        private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            int sliderValue = (int)Math.Round(e.NewValue);
+            SliderControl.Value = sliderValue; 
+            SliderValueLabel.Text = sliderValue.ToString() + " days"; 
+        }
+
 
         private void OnSubmitClicked(object sender, EventArgs e)
         {
             var prayerRequest = PrayerRequestEntry.Text;
-            //var prayerDate = PrayerDate.Date;
 
-            //DisplayAlert("Prayer Request Submitted", $"Prayer Request: {prayerRequest}\nDate: {prayerDate.ToShortDateString()}", "OK");
         }
     }
 }
