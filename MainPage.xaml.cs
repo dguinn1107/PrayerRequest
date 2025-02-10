@@ -18,6 +18,11 @@
             Console.WriteLine($"Selected date: {selectedDate.ToShortDateString()}");
         }
 
+        private void SliderValueChanged(object sender, ValueChangedEventArgs e)
+        {
+            SliderValueLabel.Text = e.NewValue.ToString("0") + " days";
+        }
+
         private void OnSubmitClicked(object sender, EventArgs e)
         {
             var prayerRequest = PrayerRequestEntry.Text;
@@ -27,4 +32,3 @@
         }
     }
 }
-
