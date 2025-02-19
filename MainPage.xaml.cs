@@ -1,4 +1,6 @@
-﻿namespace PrayerRequest
+﻿
+
+namespace PrayerRequest
 {
     public partial class MainPage : ContentPage
     {
@@ -17,18 +19,40 @@
             var selectedDate = e.NewDate;
             Console.WriteLine($"Selected date: {selectedDate.ToShortDateString()}");
         }
-        private void OnSliderValueChanged(object sender, ValueChangedEventArgs e)
-        {
-            int sliderValue = (int)Math.Round(e.NewValue);
-            SliderControl.Value = sliderValue; 
-            SliderValueLabel.Text = sliderValue.ToString() + " days"; 
-        }
 
 
-        private void OnSubmitClicked(object sender, EventArgs e)
+        private async void OnSubmitClicked(object sender, EventArgs e)
         {
             var prayerRequest = PrayerRequestEntry.Text;
+            
+            Preferences.Set("SelectedPickerIndex", PickerControl.SelectedIndex);
+            Preferences.Set("SelectedPickerValue", PickerControl.SelectedItem?.ToString());
 
+            
+            Preferences.Set("SliderValue", SliderControl.Value);
+
+         
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+           
+            if (Preferences.ContainsKey("SelectedPickerIndex"))
+            {
+                int savedIndex = Preferences.Get("SelectedPickerIndex", 0);
+                if (savedIndex >= 0 && savedIndex < PickerControl.Items.Count)
+                {
+                    PickerControl.SelectedIndex = savedIndex;
+                }
+            }
+
+           
+            if (Preferences.ContainsKey("SliderValue"))
+            {
+                SliderControl.Value = Preferences.Get("SliderValue", 1); 
+            }
         }
     }
 }

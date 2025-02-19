@@ -33,6 +33,7 @@
                HeightRequest="50" />
 
         <Picker Grid.Row="2" Grid.Column="1"
+               x:Name="PickerControl"
                 Title="Urgency"
                 HorizontalOptions="Fill">
             <Picker.Items>
@@ -53,13 +54,14 @@
                 Maximum="7"
                 Value="1"
                 HorizontalOptions="Fill"
-                ValueChanged="OnSliderValueChanged" />
+                 />
 
         <Label Grid.Row="3" Grid.Column="2"
-                x:Name="SliderValueLabel"
-                Text="hi"
-                FontSize="18"
-                HorizontalOptions="Start"/>
+           Text="{Binding Source={x:Reference SliderControl}, Path=Value, StringFormat='{0} Days'}"
+           x:Name="SliderValueLabel"
+           FontSize="18"
+           HorizontalOptions="Start"/>
+
 
 
         <Button Grid.Row="6" Grid.Column="1"
