@@ -1,15 +1,41 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
+    
     x:Class="PrayerRequest.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:PrayerRequest"
-    Shell.FlyoutBehavior="Disabled"
+    Shell.FlyoutBehavior="Flyout"
     Title="PrayerRequest">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+ 
+ 
+    <FlyoutItem Title="Main Page">
+        <Tab>
+            <ShellContent
+                ContentTemplate="{DataTemplate local:MainPage}"
+                Route="Request Prayers" />
+            <ShellContent/>
+        </Tab>
+        </FlyoutItem>
+
+        <FlyoutItem Title="Prayer Requests">
+        <Tab>
+            <ShellContent
+                ContentTemplate="{DataTemplate local:Requests}"
+                Route="Requests" />
+                <ShellContent/>
+            </Tab>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings">
+        <Tab>
+            <ShellContent
+                ContentTemplate="{DataTemplate local:Settings}"
+                Route="Settings" />
+            <ShellContent/>
+        </Tab>
+    </FlyoutItem>
+
 
 </Shell>

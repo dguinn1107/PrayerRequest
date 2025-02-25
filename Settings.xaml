@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrayerRequest.Settings"
+             Title="Settings">
+    <VerticalStackLayout Padding="20" Spacing="20">
+  
+        <Label Text="Default Urgency:" FontAttributes="Bold" />
+        <Picker x:Name="UrgencyPicker" SelectedIndexChanged="UrgencyPicker_SelectedIndexChanged">
+            <Picker.Items>
+                <x:String>Low</x:String>
+                <x:String>Medium</x:String>
+                <x:String>High</x:String>
+            </Picker.Items>
+        </Picker>
+
+      
+        <Label Text="Default Expiration (hours):" FontAttributes="Bold" />
+        <Slider x:Name="ExpirationSlider" Minimum="0" Maximum="24" ValueChanged="ExpirationSlider_ValueChanged" />
+
+        <Label x:Name="ExpirationValueLabel" Text="0 hours" HorizontalOptions="Center" />
+    </VerticalStackLayout>
+</ContentPage>

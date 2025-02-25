@@ -72,4 +72,16 @@
 	  </Compile>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <MauiXaml Update="PrayerRequestsItem.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Requests.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Settings.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
 </Project>
