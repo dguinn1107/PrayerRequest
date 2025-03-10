@@ -10,10 +10,6 @@ public partial class Requests : ContentPage
 		InitializeComponent();
 	}
 
-	private void AddRequests(object sender, EventArgs e)
-	{
-        var item = new PrayerRequestItem();
-        verticalStackLayout.Children.Add(item);
-    }
+
 
 }

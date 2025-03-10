@@ -4,39 +4,29 @@
     <Border Stroke="Black" StrokeThickness="2" Padding="5" Margin="5">
         <Grid Padding="5">
             <Grid.RowDefinitions>
-                <!-- Row 0: Prayer Request Message -->
                 <RowDefinition Height="Auto"/>
-                <!-- Row 1: Count Label and Pray Button -->
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <!-- Prayer Request Message at the Top (Centered) -->
-            <Label x:Name="PrayerRequestLabel" 
-                   Text="Pray for me!" 
+            <Label Text="{Binding RequestText}" 
                    HorizontalOptions="Center" 
                    VerticalOptions="Start"
                    Padding="5"/>
-            <!-- Bottom Row: Count Label and Pray Button -->
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
-                    <!-- Count label on the left -->
                     <ColumnDefinition Width="Auto"/>
-                    <!-- Pray button on the right -->
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <!-- Count Label with Rounded Border -->
                 <Border Stroke="Black" StrokeThickness="1" 
                         StrokeShape="RoundRectangle" 
                         BackgroundColor="LightGray"
                         Padding="0" Margin="5">
                     <Label x:Name="CountLabel" 
-                           Text="0" 
+                           Text="{Binding PrayerCount}" 
                            Padding="5"
                            VerticalOptions="Center" 
                            HorizontalOptions="Start"/>
                 </Border>
-                <!-- Pray Button -->
-                <Button x:Name="PrayButton" 
-                        Text="Pray" 
+                <Button Text="Pray" 
                         Grid.Column="1" 
                         HorizontalOptions="End" 
                         VerticalOptions="Center" 

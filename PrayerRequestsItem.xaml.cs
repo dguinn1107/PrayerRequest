@@ -5,8 +5,6 @@ namespace PrayerRequest
 {
     public partial class PrayerRequestItem : ContentView
     {
-        private int _prayerCount = 0;
-
         public PrayerRequestItem()
         {
             InitializeComponent();
@@ -14,8 +12,10 @@ namespace PrayerRequest
 
         private void PrayButton_Clicked(object sender, EventArgs e)
         {
-            _prayerCount++;
-            CountLabel.Text = _prayerCount.ToString();
+            if (BindingContext is PrayerRequestData data)
+            {
+                data.PrayerCount++;
+            }
         }
     }
 }
