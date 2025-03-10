@@ -1,6 +1,4 @@
-﻿
-
-namespace PrayerRequest
+﻿namespace PrayerRequest
 {
     public partial class MainPage : ContentPage
     {
@@ -20,38 +18,53 @@ namespace PrayerRequest
             Console.WriteLine($"Selected date: {selectedDate.ToShortDateString()}");
         }
 
-
         private async void OnSubmitClicked(object sender, EventArgs e)
         {
             var prayerRequest = PrayerRequestEntry.Text;
-            
+
             Preferences.Set("SelectedPickerIndex", PickerControl.SelectedIndex);
             Preferences.Set("SelectedPickerValue", PickerControl.SelectedItem?.ToString());
 
-            
             Preferences.Set("SliderValue", SliderControl.Value);
-
-         
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
 
-           
             if (Preferences.ContainsKey("SelectedPickerIndex"))
             {
-                int savedIndex = Preferences.Get("SelectedPickerIndex", 0);
+                int savedIndex = 0;
+                try
+                {
+                    savedIndex = Preferences.Get("SelectedPickerIndex", 0);
+                }
+                catch (InvalidCastException)
+                {
+                    var savedIndexStr = Preferences.Get("SelectedPickerIndex", "0");
+                    int.TryParse(savedIndexStr, out savedIndex);
+                }
+
                 if (savedIndex >= 0 && savedIndex < PickerControl.Items.Count)
                 {
                     PickerControl.SelectedIndex = savedIndex;
                 }
             }
 
-           
             if (Preferences.ContainsKey("SliderValue"))
             {
-                SliderControl.Value = Preferences.Get("SliderValue", 1); 
+                double sliderValue = 1;
+                try
+                {
+                    sliderValue = Preferences.Get("SliderValue", 1.0);
+                }
+                catch (InvalidCastException)
+                {
+                    var sliderValueStr = Preferences.Get("SliderValue", "1");
+                    double.TryParse(sliderValueStr, out sliderValue);
+                }
+
+                SliderControl.Value = sliderValue;
             }
         }
     }
